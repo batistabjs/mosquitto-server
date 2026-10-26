@@ -11,3 +11,9 @@ services:
     # Cria a senha automaticamente e depois inicia o Mosquitto
     command: sh -c "mosquitto_passwd -c -b /mosquitto/config/pwfile senai senai && /usr/sbin/mosquitto -c /mosquitto/config/mosquitto.conf"
     restart: unless-stopped
+    networks:
+      - nginx_proxy
+
+networks:
+  nginx_proxy:
+    external: true
